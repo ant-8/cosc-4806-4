@@ -48,6 +48,7 @@ class User
             $isSuccessful = true;
             $_SESSION["auth"] = 1;
             $_SESSION["username"] = ucwords($username);
+            $_SESSION["userid"] = $rows["userid"];
             unset($_SESSION["failedAuth"]);
             header("Location: /home");
         } else {
