@@ -9,9 +9,26 @@
         </div>
     </div>
 
-    <?php
-    print_r($data['reminders']);
-    ?>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data['reminders'] as $reminder): ?>
+                <tr>
+                    <td><?= ($reminder['subject']) ?></td>
+                    <td>
+                        <a href="#">Update</a> |
+                        <a href="#">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
 
 </div>
 <?php require_once 'app/views/templates/footer.php' ?>
