@@ -17,5 +17,11 @@ class Reminder {
         $db = db_connect();
         //do update statement
     }
+
+    public function create_reminder($subject) {
+        $db = db_connect();
+        $statement = $db->prepare("INSERT INTO reminders (subject) VALUES (?)");
+        return $statement->execute([$subject]);
+    }
 }
 ?>
