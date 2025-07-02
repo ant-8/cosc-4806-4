@@ -9,7 +9,17 @@ class Reminders extends Controller {
     }
 
     public function create() {
-        $R = $this->model('Reminder');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $subject = $_POST['subject'];
+
+            $R = $this->model('Reminder');
+            $R->create_reminder($subject);
+
+            header('Location: /reminders');
+            exit;
+        }
+
         $this->view('reminders/create');
     }
+
 }
