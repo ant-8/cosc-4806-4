@@ -13,6 +13,13 @@ class Reminder {
         return $rows;
     }
 
+    public function get_reminder_by_id($id) {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM reminders WHERE id = ?");
+        $statement->execute([$id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+    
     public function update_reminder($id, $subject) {
         $db = db_connect();
         $statement = $db->prepare("UPDATE reminders SET subject = ? WHERE id = ?");
