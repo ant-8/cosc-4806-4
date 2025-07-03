@@ -13,9 +13,10 @@ class Reminder {
         return $rows;
     }
 
-    public function update_reminder($reminder_id) {
+    public function update_reminder($id, $subject) {
         $db = db_connect();
-        //do update statement
+        $statement = $db->prepare("UPDATE reminders SET subject = ? WHERE id = ?");
+        return $statement->execute([$subject, $id]);
     }
 
     public function create_reminder($subject) {
