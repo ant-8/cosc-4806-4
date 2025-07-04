@@ -7,7 +7,7 @@ class Reminders extends Controller {
         $list_of_reminders = $R->get_all_reminders();
         $this->view('reminders/index', ['reminders' => $list_of_reminders]);
     }
-
+    
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $subject = $_POST['subject'];
@@ -22,4 +22,18 @@ class Reminders extends Controller {
         $this->view('reminders/create');
     }
 
+
+    public function update($id) {
+        $R = $this->model('Reminder');
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $subject = $_POST['subject'];
+            $R->update_reminder($id, $subject);
+            header('Location: /reminders');
+            exit;
+        }
+
+        $reminder = $R->get_reminder_by_id($id);
+        $this->view('reminders/update', ['reminder' => $reminder]);
+    }
 }
