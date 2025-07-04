@@ -31,5 +31,11 @@ class Reminder {
         $statement = $db->prepare("INSERT INTO reminders (subject) VALUES (?)");
         return $statement->execute([$subject]);
     }
+
+    public function delete_reminder($id) {
+        $db = db_connect();
+        $statement = $db->prepare("DELETE FROM reminders WHERE id = ?");
+        return $statement->execute([$id]);
+    }
 }
 ?>
