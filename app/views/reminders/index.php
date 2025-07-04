@@ -21,7 +21,7 @@
                 <tr>
                     <td><?= ($reminder['subject']) ?></td>
                     <td>
-                        <a href="#">Update</a> |
+                        <a href="/reminders/update/<?= $reminder['id'] ?>">Update</a> |
                         <a href="#">Delete</a>
                     </td>
                 </tr>
