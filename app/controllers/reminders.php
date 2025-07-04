@@ -36,4 +36,11 @@ class Reminders extends Controller {
         $reminder = $R->get_reminder_by_id($id);
         $this->view('reminders/update', ['reminder' => $reminder]);
     }
+
+    public function delete($id) {
+        $R = $this->model('Reminder');
+        $R->delete_reminder($id);
+        header('Location: /reminders');
+        exit;
+    }
 }

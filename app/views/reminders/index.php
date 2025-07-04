@@ -22,7 +22,7 @@
                     <td><?= ($reminder['subject']) ?></td>
                     <td>
                         <a href="/reminders/update/<?= $reminder['id'] ?>">Update</a> |
-                        <a href="#">Delete</a>
+                        <a href="/reminders/delete/<?= $reminder['id'] ?>">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
